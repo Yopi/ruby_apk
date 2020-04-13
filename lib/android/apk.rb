@@ -38,6 +38,7 @@ module Android
     # @raise [Android::NotApkFileError] path file is not Apk file.
     def initialize(filepath)
       @path = filepath
+      Zip.warn_invalid_date = false
       raise NotFoundError, "'#{filepath}'" unless File.exist? @path
       begin
         @zip = Zip::File.open(@path)
